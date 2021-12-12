@@ -1,7 +1,7 @@
 # finra_blackjack
 
-javac -classpath . *.java
+javac -classpath . app/*.java
 
-java -cp . Driver "numberOfPlayer"
+java -cp . app.Driver "numberOfPlayer"
   
-ex: java -cp Driever 3
+ex: java -cp app.Driever 3
