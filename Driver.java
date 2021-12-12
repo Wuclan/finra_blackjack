@@ -7,10 +7,9 @@ public class Driver {
 
 
     public static void main(String[] args) {
-        List<Player> players = new ArrayList<>();
-        players.add(new HumanPlayer("1"));
-        players.add(new HumanPlayer("2"));
-        players.add(new HumanPlayer("3"));
+        int numPlayers = Integer.parseInt(args[0]);
+        List<Player> players = new ArrayList<>(numPlayers);
+        for(int i=0;i<numPlayers;i++) players.add(new HumanPlayer(i+""));
         BlackJackGame game = new BlackJackGame(players, 1);
         game.start();
     }
