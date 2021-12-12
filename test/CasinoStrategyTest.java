@@ -16,24 +16,39 @@ public class CasinoStrategyTest {
         List<BlackJackCard> hand = new ArrayList<>();
         Assert.assertTrue(casinoStrategy.hit(hand));
 
-        hand.add(createBlackJackCard(CardRank.TEN));
+        hand.add(createBlackJackCard(CardRank.TEN,"testDeck"));
         Assert.assertTrue(casinoStrategy.hit(hand));
 
-        hand.add(createBlackJackCard(CardRank.FIVE));
+        hand.add(createBlackJackCard(CardRank.FIVE,"testDeck"));
         Assert.assertTrue(casinoStrategy.hit(hand));
 
-        hand.add(createBlackJackCard(CardRank.ACE));
+        hand.add(createBlackJackCard(CardRank.ACE,"testDeck"));
         Assert.assertTrue(casinoStrategy.hit(hand));
 
-        hand.add(createBlackJackCard(CardRank.ACE));
+        hand.add(createBlackJackCard(CardRank.ACE,"testDeck"));
         Assert.assertFalse(casinoStrategy.hit(hand));
 
         Assert.assertEquals(17, BlackJackGame.getPoint(hand));
     }
 
+    @Test
+    public void testHitOrStandWithAllAces() {
+        List<BlackJackCard> hand = new ArrayList<>();
+        for(int i=0;i<6;i++) {
 
-    private BlackJackCard createBlackJackCard(CardRank rank) {
-        Card c = new Card(rank,CardSuit.SPADE,"TestDeck");
+            hand.add(createBlackJackCard(CardRank.ACE,"testDeck"+i));
+            Assert.assertTrue("i is "+i,casinoStrategy.hit(hand));
+
+        }
+        hand.add(createBlackJackCard(CardRank.ACE,"testDeck"+16));
+        Assert.assertFalse(casinoStrategy.hit(hand));
+        Assert.assertEquals(17, BlackJackGame.getPoint(hand));
+
+    }
+
+
+    private BlackJackCard createBlackJackCard(CardRank rank,String deckName) {
+        Card c = new Card(rank,CardSuit.SPADE,deckName);
         return new BlackJackCard(c,false);
     }
     
