@@ -1,3 +1,4 @@
+package app;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,7 +10,7 @@ public class Deck {
     public Deck(int numberOfDeck) {
         cards = new ArrayList<>(numberOfDeck*52);
         for(int i=0;i<numberOfDeck;i++) {
-            createSingleDeck();
+            createSingleDeck("Deck"+i);
         }
     }
 
@@ -21,10 +22,10 @@ public class Deck {
         }
     }
 
-    private void createSingleDeck() {
+    private void createSingleDeck(String deckName) {
         for(CardRank rank:CardRank.values()) {
             for(CardSuit suit:CardSuit.values()) {
-                cards.add(new Card(rank,suit));
+                cards.add(new Card(rank,suit,deckName));
             }
         }
     }
@@ -35,6 +36,7 @@ public class Deck {
     }
 
     public Card pop() {
+        if(cards.size() == 0) return null;
         return cards.remove(0);
     }
 }

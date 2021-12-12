@@ -1,3 +1,4 @@
+package app;
 public class BlackJackCard {
     private Card card;
     private boolean faceDown;

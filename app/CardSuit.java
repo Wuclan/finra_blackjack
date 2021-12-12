@@ -1,3 +1,4 @@
+package app;
 public enum CardSuit {
     HEART("Heart"),SPADE("Spade"),DIAMOND("Diamond"),CLOVER("Clover");
     
