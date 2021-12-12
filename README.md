@@ -2,6 +2,6 @@
 
 javac -classpath . *.java
 
-java -cp . Driver <numberOfPlayer>
+java -cp . Driver "numberOfPlayer"
   
 ex: java -cp Driever 3
